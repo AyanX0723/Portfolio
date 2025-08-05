@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(120deg, #050505, #0f0f1f);
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+}
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* Glowing Button */
+.btn-glow {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #00fff7, #00aaff);
+  color: #000;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #00fff7;
+  transition: transform 0.3s;
+}
+.btn-glow:hover {
+  transform: scale(1.05);
+}
+
+/* Glassmorphism background */
+.bg-blur {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(80px);
+  z-index: -1;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: rgba(10, 10, 20, 0.6);
+  border-bottom: 1px solid #00fff7;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+.logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #00fff7;
+}
+.logo span {
+  color: #ffffff;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.nav-links li a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links li a:hover {
+  color: #00fff7;
+}
+.burger {
+  display: none;
+  font-size: 2rem;
+  color: #00fff7;
+  cursor: pointer;
+}
+
+/* Hero Section */
+#hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1a1a2f 0%, #000 100%);
+}
+.hero-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  max-width: 700px;
+}
+.hero-glass h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero-glass span {
+  color: #00fff7;
+}
+.hero-glass p {
+  font-size: 1.2rem;
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 40px;
+}
+.project-card-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  backdrop-filter: blur(20px);
+}
+.project-card-glass:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 30px #00fff7;
+}
+
+/* About Section */
+.glass-p {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  line-height: 1.8;
+}
+h2 {
+            text-align: center;
+            color: #fbfcfc;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgb(6, 6, 6);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+
+/* Contact Form */
+.glass-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(255,255,255,0.04);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+}
+input, textarea {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #0a0a0a;
+  border-top: 1px solid #00fff7;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    padding: 1rem;
+    width: 200px;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+  </style>
+</head>
+<b><body>
+  <div class="bg-blur"></div>
+
+  <header>
+    <nav>
+      <div class="logo">Port<span>Folio</span></div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#projects">About</a></li>
+        <li><a href="#about">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="burger">&#9776;</div>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="hero-glass">
+      <h1>Welcome to <span> My Profile</span></h1>
+      <p>🚀 Tech Artist | | Coder</p>
+      <a href="#projects" class="btn-glow">Explore My Work</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Who I Am</h2>
+    <p class="glass-p">NAME: Pathan Ayan Liyakat <br>
+COURSE: Master of Computer Applications (MCA) – 1st Year <br>
+INSTITUTION: Sanjivani University, Kopargaon <br>
+LOCATION: Karanji BK, Maharashtra <br>
+
+
+I am a passionate and self-motivated individual with a keen interest in technology. 
+I enjoy exploring riding bikes, travelling, and new concepts, tools, and innovations in
+ the tech world as well. My curiosity drives me to continuously learn and grow by seeking
+  out new knowledge and experiences.<br>
+In my free time, I love researching technological trends and experimenting with new 
+software and programming techniques. This passion helps me stay up to date and build 
+skills that support both my academic and professional growth.<br>
+
+ABOUT FAMILY:
+My father is farmer and my mother is house wife and they always supported my academic journey
+ and inspired me to pursue excellence. <br>
+
+FUTURE GOALS:
+I look forward to expanding my skills, contributing to meaningful projects, and becoming 
+a well-rounded IT professional. I'm excited about the opportunities ahead and committed
+ to continuous learning and development.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card-glass">
+        <h3>Online Auction System</h3>
+        <p>Using Java & html, CSS </p>
+      </div>
+      <div class="project-card-glass">
+        <h3>Online Notes Sharing</h3>
+        <p>Get, store, and share the notes online</p>
+      </div>
+      <div class="project-card-glass">
+        <h3>Pending</h3>
+        <p>Working on...</p>
+      </div>
+    </div>
+  </section>
+  
+  <h2>Technical Skills</h2>
+
+   <table>
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>Proficiency Level</th>
+                <th>Familiar Tools/Technologies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>HTML & CSS</td>
+                <td>Intermediate</td>
+                <td>VS Code, Chrome DevTools</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>Beginner</td>
+                <td>Node.js, GitHub</td>
+            </tr>
+            <tr>
+                <td>Python</td>
+                <td>Intermediate</td>
+                <td>Jupyter Notebook, PyCharm</td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>Intermediate</td>
+                <td>MySQL, SQLite</td>
+            </tr>
+            <tr>
+                <td>Version Control</td>
+                <td>Beginner</td>
+                <td>Git, GitHub</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+  <section id="contact">
+    <h2>Let’s Connect 📩</h2>
+    <form id="contact-form" class="glass-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn-glow">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© Portfolio | ~ Professionalism 🍁</p>
+    </footer>
+
+  <script src="script.js">
+    // Toggle mobile nav
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
+
+// Contact form message
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("✅ Thanks! Your message has been sent.");
+  this.reset();
+});
+</script>
+</body></b>
+</html>
